@@ -241,6 +241,7 @@ export default function PhotoLarge({
             {showExifContent &&
               <>
                 <ul className="text-medium">
+                  {photo.lensModel && <li>{photo.lensModel}</li>}
                   <li>
                     {photo.focalLength &&
                       <Link
