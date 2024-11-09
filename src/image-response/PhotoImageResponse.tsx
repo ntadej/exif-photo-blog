@@ -32,7 +32,7 @@ export default function PhotoImageResponse({
     .trim();
 
   return (
-    <ImageContainer {...{ width, height }}>
+    <ImageContainer {...{ width, height, fontFamily }}>
       <ImagePhotoGrid {...{
         photos: isNextImageReady ? [photo] : [],
         width,

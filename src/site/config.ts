@@ -51,11 +51,13 @@ export const BASE_URL = makeUrlAbsolute((
     ? VERCEL_BRANCH_URL || VERCEL_DEPLOYMENT_URL
     : 'http://localhost:3000')?.toLocaleLowerCase();
 
-const SITE_DOMAIN_SHORT = shortenUrl(SITE_DOMAIN);
+// const SITE_DOMAIN_SHORT = shortenUrl(SITE_DOMAIN);
 
 export const SITE_DOMAIN_OR_TITLE =
-  SITE_DOMAIN_SHORT ||
+  // SITE_DOMAIN_SHORT ||
   SITE_TITLE;
+
+export const SITE_COPYRIGHT = process.env.NEXT_PUBLIC_SITE_COPYRIGHT;
 
 export const SITE_DESCRIPTION =
   process.env.NEXT_PUBLIC_SITE_DESCRIPTION ||

@@ -24,6 +24,7 @@ export default function CameraImageResponse({
     <ImageContainer {...{
       width,
       height,
+      fontFamily,
       ...photos.length === 0 && { background: 'black' },
     }}>
       <ImagePhotoGrid

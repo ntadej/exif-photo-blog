@@ -23,6 +23,7 @@ export default function TagImageResponse({
     <ImageContainer {...{
       width,
       height,
+      fontFamily,
       ...photos.length === 0 && { background: 'black' },
     }}>
       <ImagePhotoGrid

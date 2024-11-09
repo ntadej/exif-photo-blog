@@ -4,7 +4,7 @@ import { clsx } from 'clsx/lite';
 import SiteGrid from '../components/SiteGrid';
 import ThemeSwitcher from '@/site/ThemeSwitcher';
 import Link from 'next/link';
-import { SHOW_REPO_LINK } from '@/site/config';
+import { SHOW_REPO_LINK, SITE_COPYRIGHT } from '@/site/config';
 import RepoLink from '../components/RepoLink';
 import { usePathname } from 'next/navigation';
 import { PATH_ADMIN_PHOTOS, isPathAdmin, isPathSignIn } from './paths';
@@ -57,6 +57,9 @@ export default function Footer() {
                     </>}
                   </>
                   : <>
+                    {SITE_COPYRIGHT && <>
+                      &copy; {SITE_COPYRIGHT}
+                    </>}
                     <Link href={PATH_ADMIN_PHOTOS}>
                       Admin
                     </Link>
