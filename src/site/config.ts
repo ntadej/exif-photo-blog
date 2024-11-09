@@ -62,11 +62,15 @@ export const SITE_COPYRIGHT = process.env.NEXT_PUBLIC_SITE_COPYRIGHT;
 export const SITE_DESCRIPTION =
   process.env.NEXT_PUBLIC_SITE_DESCRIPTION ||
   SITE_DOMAIN;
+export const SITE_HOMEPAGE =
+  process.env.NEXT_PUBLIC_SITE_HOMEPAGE || SITE_DOMAIN || '';
 
 export const SITE_ABOUT = process.env.NEXT_PUBLIC_SITE_ABOUT;
 
 export const HAS_DEFINED_SITE_DESCRIPTION =
   Boolean(process.env.NEXT_PUBLIC_SITE_DESCRIPTION);
+export const HAS_DEFINED_SITE_HOMEPAGE =
+  Boolean(process.env.NEXT_PUBLIC_SITE_HOMEPAGE);
 
 // STORAGE: DATABASE
 export const HAS_DATABASE =
