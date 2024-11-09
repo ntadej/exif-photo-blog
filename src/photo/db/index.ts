@@ -113,7 +113,7 @@ export const getOrderByFromOptions = (options: GetPhotosOptions) => {
   case 'takenAt':
     return 'ORDER BY taken_at DESC';
   case 'priority':
-    return 'ORDER BY priority_order ASC, taken_at DESC';
+    return 'ORDER BY priority_order DESC, taken_at DESC';
   }
 };
 
