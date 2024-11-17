@@ -12,6 +12,7 @@ import { useAppState } from '@/state/AppState';
 import clsx from 'clsx/lite';
 import { Recipes } from '@/recipe';
 import { Lenses } from '@/lens';
+import { GetPhotosOptions } from './db';
 
 export default function PhotoGridPage({
   photos,
@@ -21,7 +22,8 @@ export default function PhotoGridPage({
   tags,
   simulations,
   recipes,
-}: {
+  sortBy,
+} : {
   photos: Photo[]
   photosCount: number
   cameras: Cameras
@@ -29,6 +31,7 @@ export default function PhotoGridPage({
   tags: Tags
   simulations: FilmSimulations
   recipes: Recipes
+  sortBy?: GetPhotosOptions['sortBy']
 }) {
   const { setSelectedPhotoIds } = useAppState();
 
@@ -78,6 +81,7 @@ export default function PhotoGridPage({
           {renderGuard('bottom')}
         </div>
       }
+      sortBy={sortBy}
       canSelect
     />
   );
