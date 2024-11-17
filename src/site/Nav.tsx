@@ -12,6 +12,7 @@ import {
   isPathGrid,
   isPathProtected,
   isPathSignIn,
+  sortOrderForPath,
 } from '@/site/paths';
 import AnimateItems from '../components/AnimateItems';
 import { useAppState } from '@/state/AppState';
@@ -73,6 +74,7 @@ export default function Nav({
               )}>
               <ViewSwitcher
                 currentSelection={switcherSelectionForPath()}
+                currentSort={sortOrderForPath(pathname)}
                 showAdmin={isUserSignedIn}
               />
               <div className={clsx(

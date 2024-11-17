@@ -9,6 +9,7 @@ import PhotoGridSidebar from './PhotoGridSidebar';
 import PhotoGridContainer from './PhotoGridContainer';
 import { useEffect } from 'react';
 import { useAppState } from '@/state/AppState';
+import { GetPhotosOptions } from './db';
 
 export default function PhotoGridPage({
   photos,
@@ -16,12 +17,14 @@ export default function PhotoGridPage({
   tags,
   cameras,
   simulations,
+  sortBy,
 }:{
   photos: Photo[]
   photosCount: number
   tags: Tags
   cameras: Cameras
   simulations: FilmSimulations
+  sortBy?: GetPhotosOptions['sortBy']
 }) {
   const { setSelectedPhotoIds } = useAppState();
   
@@ -43,6 +46,7 @@ export default function PhotoGridPage({
           photosCount,
         }} />
       </div>}
+      sortBy={sortBy}
       canSelect
     />
   );

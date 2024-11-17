@@ -5,13 +5,16 @@ import {
 } from '.';
 import PhotosLarge from './PhotosLarge';
 import PhotosLargeInfinite from './PhotosLargeInfinite';
+import { GetPhotosOptions } from './db';
 
 export default function PhotoFeedPage({
   photos,
   photosCount,
+  sortBy,
 }:{
   photos: Photo[]
-  photosCount: number
+  photosCount: number,
+  sortBy?: GetPhotosOptions['sortBy']
 }) {
   return (
     <div className="space-y-1">
@@ -20,6 +23,7 @@ export default function PhotoFeedPage({
         <PhotosLargeInfinite
           initialOffset={INFINITE_SCROLL_FEED_INITIAL}
           itemsPerPage={INFINITE_SCROLL_FEED_MULTIPLE}
+          sortBy={sortBy}
         />}
     </div>
   );
