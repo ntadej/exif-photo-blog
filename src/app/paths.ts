@@ -9,7 +9,9 @@ import { Lens } from '@/lens';
 // Core paths
 export const PATH_ROOT                  = '/';
 export const PATH_GRID                  = '/grid';
+export const PATH_GRID_OLDEST           = '/grid-oldest';
 export const PATH_FEED                  = '/feed';
+export const PATH_FEED_OLDEST           = '/feed-oldest';
 export const PATH_ADMIN                 = '/admin';
 export const PATH_API                   = '/api';
 export const PATH_SIGN_IN               = '/sign-in';
@@ -259,10 +261,12 @@ export const isPathRoot = (pathname?: string) =>
   pathname === PATH_ROOT;
 
 export const isPathGrid = (pathname?: string) =>
-  checkPathPrefix(pathname, PATH_GRID);
+  checkPathPrefix(pathname, PATH_GRID)
+  || checkPathPrefix(pathname, PATH_GRID_OLDEST);
 
 export const isPathFeed = (pathname?: string) =>
-  checkPathPrefix(pathname, PATH_FEED);
+  checkPathPrefix(pathname, PATH_FEED)
+  || checkPathPrefix(pathname, PATH_FEED_OLDEST);
 
 export const isPathTopLevel = (pathname?: string) =>
   isPathRoot(pathname)||
@@ -291,10 +295,31 @@ export const isPathAdminInfo = (pathname?: string) =>
   isPathAdminInsights(pathname) ||
   isPathAdminConfiguration(pathname);
 
+export const isPathOldestFirst = (pathname = '') =>
+  pathname.toLowerCase().includes('oldest');
+
 export const isPathProtected = (pathname?: string) =>
   checkPathPrefix(pathname, PATH_ADMIN) ||
   checkPathPrefix(pathname, pathForTag(TAG_HIDDEN)) ||
   checkPathPrefix(pathname, PATH_OG);
+
+export const sortOrderForPath = (pathname?: string) => {
+  if (isPathOldestFirst(pathname)) {
+    if (isPathGrid(pathname)) {
+      return PATH_GRID;
+    } else if (isPathFeed(pathname)) {
+      return PATH_FEED;
+    }
+  } else {
+    if (pathname === PATH_ROOT) {
+      return GRID_HOMEPAGE_ENABLED ? PATH_GRID_OLDEST : PATH_FEED_OLDEST;
+    } else if (isPathGrid(pathname)) {
+      return PATH_GRID_OLDEST;
+    } else if (isPathFeed(pathname)) {
+      return PATH_FEED_OLDEST;
+    }
+  }
+};
 
 export const getPathComponents = (pathname = ''): {
   photoId?: string
