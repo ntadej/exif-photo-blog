@@ -10,8 +10,10 @@ export default function Switcher({
 }) {
   return (
     <div className={clsx(
-      'flex divide-x overflow-hidden',
-      'divide-medium',
+      'flex overflow-hidden',
+      type === 'regular'
+        ? 'divide-x divide-gray-300 dark:divide-gray-800'
+        : '',
       'border rounded-md',
       type === 'regular'
         ? 'border-medium'
