@@ -7,6 +7,7 @@ import { clsx } from 'clsx/lite';
 import AnimateItems from '@/components/AnimateItems';
 import { ComponentProps, useCallback, useState, ReactNode } from 'react';
 import { GRID_SPACE_CLASSNAME } from '@/components';
+import { GetPhotosOptions } from './db';
 
 export default function PhotoGridContainer({
   cacheKey,
@@ -16,12 +17,14 @@ export default function PhotoGridContainer({
   header,
   sidebar,
   canSelect,
+  sortBy,
   ...categories
 }: {
   cacheKey: string
   count: number
   header?: ReactNode
   sidebar?: ReactNode
+  sortBy?: GetPhotosOptions['sortBy']
 } & ComponentProps<typeof PhotoGrid>) {
   const [
     shouldAnimateDynamicItems,
@@ -58,6 +61,7 @@ export default function PhotoGridContainer({
               canStart: shouldAnimateDynamicItems,
               animateOnFirstLoadOnly,
               canSelect,
+              sortBy,
             }} />}
         </div>
       </div>}

@@ -10,7 +10,10 @@ export default function Switcher({
 }) {
   return (
     <div className={clsx(
-      'flex divide-x overflow-hidden',
+      'flex overflow-hidden',
+      type === 'regular'
+        ? 'divide-x divide-gray-300 dark:divide-gray-800'
+        : '',
       // Apply offset due to outline strategy
       'translate-x-[1px]',
       'rounded-[5px]',

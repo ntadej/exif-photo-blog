@@ -9,14 +9,17 @@ import { useAppState } from '@/state/AppState';
 import clsx from 'clsx/lite';
 import useElementHeight from '@/utility/useElementHeight';
 import MaskedScroll from '@/components/MaskedScroll';
+import { GetPhotosOptions } from './db';
 
 export default function PhotoGridPageClient({
   photos,
   photosCount,
+  sortBy,
   ...categories
 }: ComponentProps<typeof PhotoGridSidebar> & {
   photos: Photo[]
   photosCount: number
+  sortBy?: GetPhotosOptions['sortBy']
 }) {
   const ref = useRef<HTMLDivElement>(null);
 
@@ -50,6 +53,7 @@ export default function PhotoGridPageClient({
           }} />
         </MaskedScroll>
       }
+      sortBy={sortBy}
       canSelect
     />
   );

@@ -6,6 +6,7 @@ import {
   PATH_FEED_INFERRED,
   PATH_GRID_INFERRED,
 } from '@/app/paths';
+import { BiSortAlt2 } from 'react-icons/bi';
 import IconSearch from '../components/icons/IconSearch';
 import { useAppState } from '@/state/AppState';
 import {
@@ -25,9 +26,11 @@ export type SwitcherSelection = 'feed' | 'grid' | 'admin';
 
 export default function AppViewSwitcher({
   currentSelection,
+  currentSort,
   className,
 }: {
   currentSelection?: SwitcherSelection
+  currentSort?: string
   className?: string
 }) {
   const pathname = usePathname();
@@ -136,6 +139,17 @@ export default function AppViewSwitcher({
             keyCommand: KEY_COMMANDS.search[1],
           }}}
         />
+        {currentSort &&
+          <SwitcherItem
+            icon={<BiSortAlt2 size={20}
+              className="translate-y-[0.5px]" />}
+            href={currentSort}
+            tooltip={{...SHOW_KEYBOARD_SHORTCUT_TOOLTIPS && {
+              content: currentSort.includes('oldest')
+                ? 'Show oldest photos first'
+                : 'Show recent photos first',
+            }}}
+          />}
       </Switcher>
     </div>
   );

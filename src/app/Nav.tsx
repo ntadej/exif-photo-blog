@@ -12,6 +12,7 @@ import {
   isPathGrid,
   isPathProtected,
   isPathSignIn,
+  sortOrderForPath,
 } from '@/app/paths';
 import AnimateItems from '../components/AnimateItems';
 import {
@@ -84,6 +85,7 @@ export default function Nav({
               )}>
               <AppViewSwitcher
                 currentSelection={switcherSelectionForPath()}
+                currentSort={sortOrderForPath(pathname)}
               />
               <div className={clsx(
                 'grow text-right min-w-0',
