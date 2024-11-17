@@ -6,6 +6,7 @@ import PhotoGridInfinite from './PhotoGridInfinite';
 import { clsx } from 'clsx/lite';
 import AnimateItems from '@/components/AnimateItems';
 import { JSX, ComponentProps, useCallback, useState } from 'react';
+import { GetPhotosOptions } from './db';
 
 export default function PhotoGridContainer({
   cacheKey,
@@ -19,11 +20,13 @@ export default function PhotoGridContainer({
   header,
   sidebar,
   canSelect,
+  sortBy,
 }: {
   cacheKey: string
   count: number
   header?: JSX.Element
   sidebar?: JSX.Element
+  sortBy?: GetPhotosOptions['sortBy']
 } & ComponentProps<typeof PhotoGrid>) {
   const [
     shouldAnimateDynamicItems,
@@ -68,6 +71,7 @@ export default function PhotoGridContainer({
               focal,
               animateOnFirstLoadOnly,
               canSelect,
+              sortBy,
             }} />}
         </div>
       </div>}

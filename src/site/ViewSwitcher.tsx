@@ -7,7 +7,7 @@ import {
   PATH_FEED_INFERRED,
   PATH_GRID_INFERRED,
 } from '@/site/paths';
-import { BiLockAlt } from 'react-icons/bi';
+import { BiLockAlt, BiSortAlt2 } from 'react-icons/bi';
 import IconSearch from './IconSearch';
 import { useAppState } from '@/state/AppState';
 import { GRID_HOMEPAGE_ENABLED } from './config';
@@ -16,9 +16,11 @@ export type SwitcherSelection = 'feed' | 'grid' | 'admin';
 
 export default function ViewSwitcher({
   currentSelection,
+  currentSort,
   showAdmin,
 }: {
   currentSelection?: SwitcherSelection
+  currentSort?: string
   showAdmin?: boolean
 }) {
   const { setIsCommandKOpen } = useAppState();
@@ -56,6 +58,15 @@ export default function ViewSwitcher({
           icon={<IconSearch />}
           onClick={() => setIsCommandKOpen?.(true)}
         />
+        {currentSort &&
+          <SwitcherItem
+            icon={<BiSortAlt2 size={20}
+              className="translate-y-[0.5px]"
+              title={currentSort.includes('oldest')
+                ? 'Show oldest photos first'
+                : 'Show recent photos first'} />}
+            href={currentSort}
+          />}
       </Switcher>
     </div>
   );

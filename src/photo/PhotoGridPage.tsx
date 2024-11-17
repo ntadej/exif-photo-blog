@@ -10,6 +10,7 @@ import PhotoGridContainer from './PhotoGridContainer';
 import { useEffect } from 'react';
 import { useAppState } from '@/state/AppState';
 import clsx from 'clsx/lite';
+import { GetPhotosOptions } from './db';
 
 export default function PhotoGridPage({
   photos,
@@ -17,12 +18,14 @@ export default function PhotoGridPage({
   tags,
   cameras,
   simulations,
-}: {
+  sortBy,
+} : {
   photos: Photo[]
   photosCount: number
   tags: Tags
   cameras: Cameras
   simulations: FilmSimulations
+  sortBy?: GetPhotosOptions['sortBy']
 }) {
   const { setSelectedPhotoIds } = useAppState();
 
@@ -70,6 +73,7 @@ export default function PhotoGridPage({
           {renderGuard('bottom')}
         </div>
       }
+      sortBy={sortBy}
       canSelect
     />
   );

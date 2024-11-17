@@ -13,7 +13,7 @@ const parameterizeForDb = (text: string) =>
   `REPLACE(REPLACE(REPLACE(LOWER(TRIM(${text})), '.', ''), ',', ''), ' ', '-')`;
 
 export type GetPhotosOptions = {
-  sortBy?: 'createdAt' | 'createdAtAsc' | 'takenAt' | 'priority'
+  sortBy?: 'createdAt' | 'createdAtAsc' | 'takenAt' | 'takenAtAsc' | 'priority'
   limit?: number
   offset?: number
   query?: string
@@ -119,6 +119,8 @@ export const getOrderByFromOptions = (options: GetPhotosOptions) => {
     return 'ORDER BY created_at ASC';
   case 'takenAt':
     return 'ORDER BY taken_at DESC';
+  case 'takenAtAsc':
+    return 'ORDER BY taken_at ASC';
   case 'priority':
     return 'ORDER BY priority_order ASC, taken_at DESC';
   }
