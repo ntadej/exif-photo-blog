@@ -55,13 +55,18 @@ export default function ViewSwitcher({
       </Switcher>
       <Switcher type="borderless">
         <SwitcherItem
-          icon={<BiSortAlt2 size={20} className="translate-y-[-0.5px]" />}
-          href={currentSort}
-        />
-        <SwitcherItem
           icon={<IconSearch />}
           onClick={() => setIsCommandKOpen?.(true)}
         />
+        {currentSort &&
+          <SwitcherItem
+            icon={<BiSortAlt2 size={20}
+              className="translate-y-[0.5px]"
+              title={currentSort.includes('oldest')
+                ? 'Show oldest photos first'
+                : 'Show recent photos first'} />}
+            href={currentSort}
+          />}
       </Switcher>
     </div>
   );
