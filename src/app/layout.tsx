@@ -4,6 +4,7 @@ import { clsx } from 'clsx/lite';
 import {
   BASE_URL,
   DEFAULT_THEME,
+  SHOW_TITLE_IN_HEADER,
   SITE_DESCRIPTION,
   SITE_DOMAIN_OR_TITLE,
   SITE_TITLE,
@@ -84,7 +85,9 @@ export default function RootLayout({
                 // 1280px width defined in components/SiteGrid.tsx
                 '3xl:mx-auto 3xl:w-[1280px]',
               )}>
-                <Nav siteDomainOrTitle={SITE_DOMAIN_OR_TITLE} />
+                <Nav siteDomainOrTitle={
+                  SHOW_TITLE_IN_HEADER ? SITE_TITLE : SITE_DOMAIN_OR_TITLE
+                } />
                 <AdminBatchEditPanel />
                 <div className={clsx(
                   'min-h-[16rem] sm:min-h-[30rem]',
