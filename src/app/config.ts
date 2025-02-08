@@ -228,6 +228,8 @@ export const SHOW_SOCIAL =
   process.env.NEXT_PUBLIC_HIDE_SOCIAL !== '1';
 export const SHOW_REPO_LINK =
   process.env.NEXT_PUBLIC_HIDE_REPO_LINK !== '1';
+export const SHOW_TITLE_IN_HEADER =
+  process.env.NEXT_PUBLIC_TITLE_IN_HEADER === '1';
 
 // GRID
 

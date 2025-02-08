@@ -5,6 +5,7 @@ import {
   BASE_URL,
   DEFAULT_THEME,
   PRESERVE_ORIGINAL_UPLOADS,
+  SHOW_TITLE_IN_HEADER,
   SITE_DESCRIPTION,
   SITE_DOMAIN_OR_TITLE,
   SITE_TITLE,
@@ -85,7 +86,9 @@ export default function RootLayout({
                 'mx-3 mb-3',
                 'lg:mx-6 lg:mb-6',
               )}>
-                <Nav siteDomainOrTitle={SITE_DOMAIN_OR_TITLE} />
+                <Nav siteDomainOrTitle={
+                  SHOW_TITLE_IN_HEADER ? SITE_TITLE : SITE_DOMAIN_OR_TITLE
+                } />
                 <main>
                   <ShareModals />
                   <RecipeModal />
