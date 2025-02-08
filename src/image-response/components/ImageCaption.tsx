@@ -1,4 +1,7 @@
-import { OG_TEXT_BOTTOM_ALIGNMENT } from '@/app/config';
+import {
+  OG_TEXT_BOTTOM_ALIGNMENT,
+  SITE_COPYRIGHT,
+} from '@/app/config';
 import { ReactNode } from 'react';
 
 const GRADIENT_STOPS = 'rgba(0,0,0,0), rgba(0,0,0,0.3), rgba(0,0,0,0.7)';
@@ -22,7 +25,7 @@ export default function ImageCaption({
   legacyBottomAlignment?: boolean
 }) {
   const paddingEdge = height * .07;
-  const paddingContent = height * .6;
+  const paddingContent = height * (SITE_COPYRIGHT ? .3 : .6);
   return (
     <div style={{
       display: 'flex',

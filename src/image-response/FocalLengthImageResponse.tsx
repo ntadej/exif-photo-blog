@@ -1,8 +1,10 @@
+import { SITE_COPYRIGHT } from '@/app/config';
 import type { Photo } from '../photo';
 import ImageCaption from './components/ImageCaption';
-import ImagePhotoGrid from './components/ImagePhotoGrid';
 import ImageContainer from './components/ImageContainer';
 import type { NextImageSize } from '@/platforms/next-image';
+import ImageCopyright from './components/ImageCopyright';
+import ImagePhotoGrid from './components/ImagePhotoGrid';
 import { formatFocalLength } from '@/focal';
 import IconFocalLength from '@/components/icons/IconFocalLength';
 
@@ -41,6 +43,14 @@ export default function FocalLengthImageResponse({
         </span>,
         title: formatFocalLength(focal),
       }} />
+      {SITE_COPYRIGHT &&
+        <ImageCopyright {...{
+          width,
+          height,
+          fontFamily,
+        }}>
+          &copy; {SITE_COPYRIGHT}
+        </ImageCopyright>}
     </ImageContainer>
   );
 }

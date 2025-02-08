@@ -4,7 +4,11 @@ import { clsx } from 'clsx/lite';
 import SiteGrid from '../components/SiteGrid';
 import ThemeSwitcher from '@/app/ThemeSwitcher';
 import Link from 'next/link';
-import { SHOW_REPO_LINK } from '@/app/config';
+import {
+  SITE_COPYRIGHT,
+  SITE_HOMEPAGE_URL,
+  SHOW_REPO_LINK,
+} from '@/app/config';
 import RepoLink from '../components/RepoLink';
 import { usePathname } from 'next/navigation';
 import { PATH_ADMIN_PHOTOS, isPathAdmin, isPathSignIn } from './paths';
@@ -57,11 +61,18 @@ export default function Footer() {
                     </>}
                   </>
                   : <>
+                    {SITE_COPYRIGHT && <>
+                      &copy; {SITE_HOMEPAGE_URL ?
+                        <Link href={SITE_HOMEPAGE_URL} target='_blank'>
+                          {SITE_COPYRIGHT}
+                        </Link>
+                        : <>{SITE_COPYRIGHT}</>}
+                    </>}
+                    {SHOW_REPO_LINK &&
+                      <RepoLink />}
                     <Link href={PATH_ADMIN_PHOTOS}>
                       Admin
                     </Link>
-                    {SHOW_REPO_LINK &&
-                      <RepoLink />}
                   </>}
               </div>
               <div className="flex items-center h-10">

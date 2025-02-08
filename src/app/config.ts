@@ -98,6 +98,8 @@ export const SITE_DOMAIN_OR_TITLE =
 export const SITE_DESCRIPTION =
   process.env.NEXT_PUBLIC_SITE_DESCRIPTION ||
   SITE_DOMAIN;
+export const SITE_COPYRIGHT = process.env.NEXT_PUBLIC_SITE_COPYRIGHT;
+export const SITE_HOMEPAGE_URL = process.env.NEXT_PUBLIC_SITE_HOMEPAGE_URL;
 
 export const SITE_ABOUT = process.env.NEXT_PUBLIC_SITE_ABOUT;
 

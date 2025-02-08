@@ -1,10 +1,12 @@
+import { SITE_COPYRIGHT } from '@/app/config';
 import { Photo, shouldShowExifDataForPhoto } from '../photo';
 import { AiFillApple } from 'react-icons/ai';
 import ImageCaption from './components/ImageCaption';
-import ImagePhotoGrid from './components/ImagePhotoGrid';
 import ImageContainer from './components/ImageContainer';
 import { OG_TEXT_BOTTOM_ALIGNMENT } from '@/app/config';
 import { NextImageSize } from '@/platforms/next-image';
+import ImageCopyright from './components/ImageCopyright';
+import ImagePhotoGrid from './components/ImagePhotoGrid';
 import { cameraFromPhoto, formatCameraText } from '@/camera';
 
 export default function PhotoImageResponse({
@@ -49,6 +51,14 @@ export default function PhotoImageResponse({
           }} /> },
           title: caption,
         }} />}
+      {SITE_COPYRIGHT &&
+        <ImageCopyright {...{
+          width,
+          height,
+          fontFamily,
+        }}>
+          &copy; {SITE_COPYRIGHT}
+        </ImageCopyright>}
     </ImageContainer>
   );
 };
