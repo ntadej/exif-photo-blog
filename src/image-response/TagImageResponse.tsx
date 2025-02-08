@@ -1,6 +1,8 @@
+import { SITE_COPYRIGHT } from '@/site/config';
 import type { Photo } from '../photo';
 import { FaStar, FaTag } from 'react-icons/fa';
 import ImageCaption from './components/ImageCaption';
+import ImageCopyright from './components/ImageCopyright';
 import ImagePhotoGrid from './components/ImagePhotoGrid';
 import ImageContainer from './components/ImageContainer';
 import type { NextImageSize } from '@/services/next-image';
@@ -55,6 +57,14 @@ export default function TagImageResponse({
       }}>
         {formatTag(tag).toLocaleUpperCase()}
       </ImageCaption>
+      {SITE_COPYRIGHT &&
+        <ImageCopyright {...{
+          width,
+          height,
+          fontFamily,
+        }}>
+          &copy; {SITE_COPYRIGHT}
+        </ImageCopyright>}
     </ImageContainer>
   );
 }

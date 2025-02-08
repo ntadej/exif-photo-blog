@@ -1,7 +1,9 @@
+import { SITE_COPYRIGHT } from '@/site/config';
 import type { Photo } from '../photo';
 import ImageCaption from './components/ImageCaption';
-import ImagePhotoGrid from './components/ImagePhotoGrid';
 import ImageContainer from './components/ImageContainer';
+import ImageCopyright from './components/ImageCopyright';
+import ImagePhotoGrid from './components/ImagePhotoGrid';
 import type { NextImageSize } from '@/services/next-image';
 import { TbCone } from 'react-icons/tb';
 import { formatFocalLength } from '@/focal';
@@ -46,6 +48,14 @@ export default function FocalLengthImageResponse({
       }}>
         {formatFocalLength(focal)}
       </ImageCaption>
+      {SITE_COPYRIGHT &&
+        <ImageCopyright {...{
+          width,
+          height,
+          fontFamily,
+        }}>
+          &copy; {SITE_COPYRIGHT}
+        </ImageCopyright>}
     </ImageContainer>
   );
 }

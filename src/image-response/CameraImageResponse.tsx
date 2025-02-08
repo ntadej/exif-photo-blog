@@ -1,7 +1,9 @@
+import { SITE_COPYRIGHT } from '@/site/config';
 import { Photo } from '../photo';
 import ImageCaption from './components/ImageCaption';
-import ImagePhotoGrid from './components/ImagePhotoGrid';
 import ImageContainer from './components/ImageContainer';
+import ImageCopyright from './components/ImageCopyright';
+import ImagePhotoGrid from './components/ImagePhotoGrid';
 import {
   Camera,
   cameraFromPhoto,
@@ -60,6 +62,14 @@ export default function CameraImageResponse({
       }}>
         {formatCameraText(camera).toLocaleUpperCase()}
       </ImageCaption>
+      {SITE_COPYRIGHT &&
+        <ImageCopyright {...{
+          width,
+          height,
+          fontFamily,
+        }}>
+          &copy; {SITE_COPYRIGHT}
+        </ImageCopyright>}
     </ImageContainer>
   );
 }
