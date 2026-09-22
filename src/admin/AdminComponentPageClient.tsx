@@ -1,5 +1,10 @@
 'use client';
 
+import CameraBrand from '@/camera/CameraBrand';
+import {
+  CAMERA_BRANDS,
+  type CameraBrand as CameraBrandName,
+} from '@/camera/brand';
 import FieldsetTag from '@/tag/FieldsetTag';
 import AppGrid from '@/components/AppGrid';
 import FieldsetWithStatus from '@/components/FieldsetWithStatus';
@@ -14,6 +19,24 @@ import { Photo } from '@/photo';
 import FieldsetPhotoChooser from '@/photo/form/FieldsetPhotoChooser';
 import PhotoFolder from '@/components/folder/PhotoFolder';
 import type { PhotoFolderTint } from '@/components/folder';
+
+const CAMERA_BRAND_TEXT_SIZES = [{
+  className: 'text-xs',
+}, {
+  className: 'text-base',
+}, {
+  className: 'text-2xl',
+}] as const;
+
+const CAMERA_BRAND_MODELS: Record<CameraBrandName, string[]> = {
+  fujifilm: ['X-T5', 'X100VI', 'X-H2S', 'GFX 100S II'],
+  nikon: ['Zf', 'Z 8', 'D850', 'Z 6III'],
+  canon: ['R8', 'EOS R5', 'EOS R6 Mark II', '5D Mark IV'],
+  leica: ['M11', 'Q3 43', 'M11 Monochrom', 'SL3'],
+  hasselblad: ['907X', 'X2D', 'X2D 100C', 'CFV 100C'],
+  panasonic: ['S9', 'S5 II', 'S5 IIX', 'GH7'],
+  sony: ['A7C', 'A7R V', 'A1 II', 'FX3'],
+};
 
 export default function AdminComponentPageClient({
   photo,
@@ -41,9 +64,42 @@ export default function AdminComponentPageClient({
     TINT_FOLDERS ? 'on' : 'off',
   );
 
+  const [showAllTextSizes, setShowAllTextSizes] = useState(false);
+
+  const cameraBrandTextSizes = showAllTextSizes
+    ? CAMERA_BRAND_TEXT_SIZES
+    : CAMERA_BRAND_TEXT_SIZES.filter(({ className }) =>
+      className === 'text-base');
+
   return (
     <AppGrid
       contentMain={<div className="flex flex-col gap-4">
+        <FieldsetWithStatus
+          label="All text sizes"
+          type="checkbox"
+          value={showAllTextSizes ? 'true' : 'false'}
+          onChange={value => setShowAllTextSizes(value === 'true')}
+        />
+        <div className="space-y-3">
+          {cameraBrandTextSizes.map(({ className }) =>
+            <div
+              key={className}
+              className={clsx(
+                className,
+                'flex flex-wrap items-baseline gap-x-5 gap-y-2',
+                'uppercase',
+              )}
+            >
+              {CAMERA_BRANDS.flatMap(brand =>
+                CAMERA_BRAND_MODELS[brand].map(model =>
+                  <span
+                    key={`${brand}-${model}`}
+                    className="whitespace-nowrap"
+                  >
+                    <CameraBrand brand={brand} />{model}
+                  </span>))}
+            </div>)}
+        </div>
         <FieldsetWithStatus
           label="Color tint"
           type="checkbox"

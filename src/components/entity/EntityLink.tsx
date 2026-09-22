@@ -45,6 +45,7 @@ export default function EntityLink({
   iconBadgeStart,
   iconBadgeEnd,
   label,
+  labelForHover,
   labelSmall,
   iconWide,
   type,
@@ -71,7 +72,8 @@ export default function EntityLink({
   icon: ReactNode
   iconBadgeStart?: ReactNode
   iconBadgeEnd?: ReactNode
-  label: string
+  label: ReactNode
+  labelForHover?: ReactNode
   labelSmall?: ReactNode
   iconWide?: boolean
   path?: string
@@ -122,9 +124,9 @@ export default function EntityLink({
       hoverType === 'text'
     );
 
-  const renderLabel =
-    <ResponsiveText shortText={labelSmall}>
-      {label}
+  const renderLabel = (useForHover?: boolean) =>
+    <ResponsiveText shortText={useForHover ? undefined : labelSmall}>
+      {useForHover ? (labelForHover ?? label) : label}
     </ResponsiveText>;
 
   const renderLink = (useForHover?: boolean) =>
@@ -179,7 +181,7 @@ export default function EntityLink({
             {badgeType === 'medium' &&
               <span className="translate-y-[0.5px]">{icon}</span>}
             {badgeType !== 'medium' && iconBadgeStart}
-            {renderLabel}
+            {renderLabel(useForHover)}
             {badgeType !== 'medium' && iconBadgeEnd}
           </Badge>
           : <span className={clsx(
@@ -188,7 +190,7 @@ export default function EntityLink({
             'decoration-dotted underline-offset-[4px]',
             'decoration-gray-300 dark:decoration-gray-600',
           )}>
-            {renderLabel}
+            {renderLabel(useForHover)}
           </span>}
       </LabeledIcon>
     </LinkWithStatus>;

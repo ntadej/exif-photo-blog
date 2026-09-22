@@ -96,6 +96,7 @@ export default function LibraryPageClient({
         camera={camera}
         type="text-only"
         contrast="high"
+        showBrandLogo
       />,
     ),
     lens && renderItem(
